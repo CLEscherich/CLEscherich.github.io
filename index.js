@@ -77,6 +77,7 @@ function clearStatusClass(element) {
     element.classList.remove('correct')
     element.classList.remove('wrong')
 }
+//the questions for the quiz
 const questions = [
     {
         question: "What does HTML stand for?",
@@ -116,6 +117,7 @@ const questions = [
             },
         
 ]
+//the timer for the quiz set to the start button
 function startTimer(duration, display) {
     var timer = duration, minutes, seconds;
     setInterval(function () {
