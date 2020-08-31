@@ -1,3 +1,4 @@
+//all my elements are here
 const startButton = document.getElementById('start-btn');
 const nextButton = document.getElementById('next-btn')
 const questionContainerElement = document.getElementById ('question-container')
@@ -5,15 +6,15 @@ const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
 
 
-
+//using the shuffle questions so that it shouldnt be the same question everytime
 let shuffledQuestions, currentQuestionIndex
-
+// The buttons and event listeners for the quiz
 startButton.addEventListener("click", startGame);
 nextButton.addEventListener('click', () => {
     currentQuestionIndex++
     setNextQuestion()
 })
-
+//start button
 function startGame() {
 startButton.classList.add('hide')
 questionContainerElement.classList.remove('hide')
@@ -21,12 +22,12 @@ shuffledQuestions = questions.sort(() => Math.random() - .5)
 currentQuestionIndex = 0
 setNextQuestion()
 }
-
+//next button
 function setNextQuestion() {
     resetState()
 showQuestion(shuffledQuestions[currentQuestionIndex])
 }
-
+//showing the questions
 function showQuestion(question) {
     questionElement.innerText = question.question
     question.answers.forEach(answer => {
@@ -40,7 +41,7 @@ function showQuestion(question) {
       answerButtonsElement.appendChild(button)
     });
 }
-
+//reseting the buttons to reflect the answers
 function resetState() {
     nextButton.classList.add('hide')
     while (answerButtonsElement.firstChild) {
@@ -48,6 +49,7 @@ function resetState() {
         (answerButtonsElement.firstChild)
     }
 }
+//answer select from array
 function selectAnswer(e) {
     const slectedButton = e.target
     const correct = slectedButton.dataset.correct
@@ -61,6 +63,7 @@ function selectAnswer(e) {
         startButton.classList.remove('hide')
     }
 }
+//adding the colors for the correct answers
 function setStatusClass(element, correct) {
     clearStatusClass(element)
     if (correct) {
@@ -69,6 +72,7 @@ function setStatusClass(element, correct) {
         element.classList.add('wrong')
     }
 }
+//adding the colors for the wrong answers
 function clearStatusClass(element) {
     element.classList.remove('correct')
     element.classList.remove('wrong')
